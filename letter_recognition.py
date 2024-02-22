@@ -12,3 +12,9 @@ print(letter_recognition.metadata)
 
 # variable information
 print(letter_recognition.variables)
+
+import seaborn as sns
+sns.set_style("whitegrid")
+
+# check class imbalance
+y.groupby('lettr')['lettr'].count().plot(kind='bar', figsize=(12, 8))
