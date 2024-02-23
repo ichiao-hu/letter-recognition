@@ -32,3 +32,9 @@ for i, col in enumerate(X.columns):
 
 plt.tight_layout()
 plt.show()
+
+# draw correlation plot
+
+plt.figure(figsize=(16, 12))
+sns.heatmap(X.corr(), annot=True, cmap='coolwarm', fmt=".2f", linewidths=.5)
+plt.show()
