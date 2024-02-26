@@ -49,3 +49,16 @@ import numpy as np
 y_train = np.ravel(y_train)
 y_val = np.ravel(y_val)
 y_test = np.ravel(y_test)
+
+from sklearn.linear_model import LogisticRegression
+
+# multinomial logistic regression
+logistic_model = LogisticRegression()
+logistic_model.fit(X_train, y_train)
+
+y_pred = logistic_model.predict(X_test)
+
+from sklearn.metrics import accuracy_score, f1_score
+
+accuracy_lr = accuracy_score(y_test, y_pred)
+f1_lr = f1_score(y_test, y_pred, average='weighted')
