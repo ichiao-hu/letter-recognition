@@ -62,3 +62,14 @@ from sklearn.metrics import accuracy_score, f1_score
 
 accuracy_lr = accuracy_score(y_test, y_pred)
 f1_lr = f1_score(y_test, y_pred, average='weighted')
+
+from sklearn.ensemble import RandomForestClassifier
+
+# random forests
+random_forest_model = RandomForestClassifier()
+random_forest_model.fit(X_train, y_train)
+
+y_pred = random_forest_model.predict(X_test)
+
+accuracy_rf = accuracy_score(y_test, y_pred)
+f1_rf = f1_score(y_test, y_pred, average='weighted')
