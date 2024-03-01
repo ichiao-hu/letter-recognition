@@ -14,7 +14,7 @@ print(letter_recognition.metadata)
 print(letter_recognition.variables)
 
 import seaborn as sns
-sns.set_style("whitegrid")
+sns.set_style('whitegrid')
 
 # check class imbalance
 y.groupby('lettr')['lettr'].count().plot(kind='bar', figsize=(12, 8))
@@ -34,7 +34,7 @@ plt.show()
 
 # draw correlation plot
 plt.figure(figsize=(16, 12))
-sns.heatmap(X.corr(), annot=True, cmap='coolwarm', fmt=".2f", linewidths=.5)
+sns.heatmap(X.corr(), annot=True, cmap='coolwarm', fmt='.2f', linewidths=.5)
 plt.show()
 
 from sklearn.model_selection import train_test_split
@@ -73,3 +73,15 @@ y_pred = random_forest_model.predict(X_test)
 
 accuracy_rf = accuracy_score(y_test, y_pred)
 f1_rf = f1_score(y_test, y_pred, average='weighted')
+
+# plot feature importances
+feature_importances = random_forest_model.feature_importances_
+sorted_indices = feature_importances.argsort()[::-1]
+
+plt.figure(figsize=(16, 12))
+plt.bar(range(X.shape[1]), feature_importances[sorted_indices], align='center')
+plt.xticks(range(X.shape[1]), X.columns[sorted_indices])
+plt.xlabel('Feature')
+plt.ylabel('Importance')
+plt.title('Random Forest Feature Importances')
+plt.show()
