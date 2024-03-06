@@ -85,3 +85,14 @@ plt.xlabel('Feature')
 plt.ylabel('Importance')
 plt.title('Random Forest Feature Importances')
 plt.show()
+
+from sklearn.svm import SVC
+
+# support vector machines
+svm_model = SVC()
+svm_model.fit(X_train, y_train)
+
+y_pred = svm_model.predict(X_test)
+
+accuracy_svm = accuracy_score(y_test, y_pred)
+f1_svm = f1_score(y_test, y_pred, average='weighted')
