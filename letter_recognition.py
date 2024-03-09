@@ -96,3 +96,28 @@ y_pred = svm_model.predict(X_test)
 
 accuracy_svm = accuracy_score(y_test, y_pred)
 f1_svm = f1_score(y_test, y_pred, average='weighted')
+
+from sklearn.neighbors import KNeighborsClassifier
+
+# k-nearest neighbors
+neighbors_range = list(range(1, 21))
+accuracy_scores = []
+
+# hyperparameter tuning for k-nn using elbow method
+for n_neighbors in neighbors_range:
+    
+    knn = KNeighborsClassifier(n_neighbors=n_neighbors)
+    knn.fit(X_train, y_train)
+    
+    y_pred = knn.predict(X_val)
+    
+    accuracy = accuracy_score(y_val, y_pred)
+    accuracy_scores.append(accuracy)
+
+plt.figure(figsize=(16, 12))
+plt.plot(neighbors_range, accuracy_scores, marker='o')
+plt.title('Elbow Method for k-NN Hyperparameter Tuning')
+plt.xlabel('Number of Neighbors')
+plt.ylabel('Accuracy Score')
+plt.xticks(neighbors_range)
+plt.show()
