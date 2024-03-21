@@ -140,3 +140,15 @@ y_pred = mlp_model.predict(X_test)
 
 accuracy_mlp = accuracy_score(y_test, y_pred)
 f1_mlp = f1_score(y_test, y_pred, average='weighted')
+
+import pandas as pd
+
+# compare model performances
+df_performance = pd.DataFrame({
+    'model': ['Multinomial Logistic Regression', 'Random Forests', 'Support Vector Machines',
+              'k-Nearest Neighbors', 'Neural Network'],
+    'accuracy': [accuracy_lr, accuracy_rf, accuracy_svm, accuracy_knn, accuracy_mlp],
+    'f1_score': [f1_lr, f1_rf, f1_svm, f1_knn, f1_mlp]
+})
+
+df_performance
