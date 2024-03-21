@@ -121,3 +121,11 @@ plt.xlabel('Number of Neighbors')
 plt.ylabel('Accuracy Score')
 plt.xticks(neighbors_range)
 plt.show()
+
+knn_model = KNeighborsClassifier(n_neighbors=4)
+knn_model.fit(X_train, y_train)
+
+y_pred = knn_model.predict(X_test)
+
+accuracy_knn = accuracy_score(y_test, y_pred)
+f1_knn = f1_score(y_test, y_pred, average='weighted')
