@@ -129,3 +129,14 @@ y_pred = knn_model.predict(X_test)
 
 accuracy_knn = accuracy_score(y_test, y_pred)
 f1_knn = f1_score(y_test, y_pred, average='weighted')
+
+from sklearn.neural_network import MLPClassifier
+
+# neural network: multilayer perceptron
+mlp_model = MLPClassifier()
+mlp_model.fit(X_train, y_train)
+
+y_pred = mlp_model.predict(X_test)
+
+accuracy_mlp = accuracy_score(y_test, y_pred)
+f1_mlp = f1_score(y_test, y_pred, average='weighted')
